@@ -5,14 +5,14 @@
  */
 package negocio;
 
-import Dados.Banco;
-import Entidades.Aeroporto;
+import dados.Banco;
+import entidades.Aeroporto;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 
 /**
  *
- * @author marcos
+ * @author Artur Pereira e Patrick Anderson
  */
 public class NegocioAeroporto extends Telas.TelaAeroportos {
     

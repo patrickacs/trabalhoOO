@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author marcos
+ * @author Artur Pereira e Patrick Andersom
  */
 public class ReservaViagem {
     private long id;

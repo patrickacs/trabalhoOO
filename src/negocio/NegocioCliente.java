@@ -5,16 +5,16 @@
  */
 package negocio;
 
-import Dados.Banco;
-import Entidades.PessoaFisica;
-import Entidades.PessoaJuridica;
-import Telas.TelaClientes;
+import dados.Banco;
+import entidades.PessoaFisica;
+import entidades.PessoaJuridica;
+import Telas.Clientes;
 import javax.swing.JOptionPane;
 import java.util.Hashtable;
 
 /**
  *
- * @author marcos
+ * @author Artur Pereira e Patrick Anderson
  */
 public class NegocioCliente extends TelaClientes {
      private Banco banco;

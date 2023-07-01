@@ -9,7 +9,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  *
- * @author Henrique Parucker
+ * @author Artur Pereira e Patrick Anderson
  */
 public class Voo {
     private String data;
