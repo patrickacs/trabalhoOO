@@ -7,7 +7,7 @@ package entidades;
 
 /**
  *
- * @author Henrique Parucker
+ * @author Artur Pereira e Patrick Anderson
  */
 public class DescricaoAviao {
     private String nomeFabricante;

@@ -9,9 +9,9 @@ import java.util.ArrayList;
 
 /**
  *
- * @author marcos
+ * @author Artur Pereira e Patrick Anderson
  */
-public class Pessoa {    
+public abstract class Pessoa {    
     protected String endereco;
     protected String tel1;
     protected String tel2;

@@ -7,7 +7,7 @@ package entidades;
 
 /**
  *
- * @author marcos
+ * @author Artur Pereira e Patrick Anderson
  */
 public class PessoaJuridica extends Pessoa {
     private String CNPJ;

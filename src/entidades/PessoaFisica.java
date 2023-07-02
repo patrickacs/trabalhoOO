@@ -7,7 +7,7 @@ package entidades;
 
 /**
  *
- * @author marcos
+ * @author Artur Pereira e Patrick Anderson
  */
 public class PessoaFisica extends Pessoa {
     private static final byte M = 0;
