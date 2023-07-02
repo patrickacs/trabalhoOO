@@ -15,7 +15,7 @@ import javax.swing.JOptionPane;
 import java.util.ArrayList;
 /**
  *
- * @author marcos
+ * @author Artur Pereira e Patrick Anderson
  */
 public class NegocioVoo extends Telas.TelaVoos {
     
