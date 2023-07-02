@@ -1,4 +1,4 @@
-package telas;
+package view;
 
 import java.awt.event.*;
 import javax.swing.ImageIcon;
@@ -19,7 +19,7 @@ import java.awt.Color;
  * @since release 1
  */
 
-public class TelaItinerario {
+public class ViewItinerarioList {
     private JFrame frame;
     private JLabel background;
     private JTable table;
@@ -39,7 +39,7 @@ public class TelaItinerario {
     /**
      * Construtor da classe ViewFirstScreen, onde é criada a interface gráfica.
      */
-    public TelaItinerario() {
+    public ViewItinerarioList() {
         frame = new JFrame();
         frame.setBounds(150, 150, 829, 550);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -88,29 +88,19 @@ public class TelaItinerario {
         table.setForeground(new Color(0, 0, 0));
         table.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         table.setModel(new DefaultTableModel(
-                new Object[][] {
-                        { "", null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                        { null, null, null, null, null, null },
-                },
-                new String[] {
-                        "Aeroporto de Partida", "Aeroporto de Chegada", "Hor\u00E1rio de Partida",
-                        "Hor\u00E1rio de Chegada", "Cidade de Partida", "Cidade de Chegada"
-                }) {
-            Class[] columnTypes = new Class[] {
-                    Object.class, Object.class, String.class, Object.class, Object.class, Object.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return columnTypes[columnIndex];
-            }
+        	new Object[][] {
+        		{null, null, null, null, null, null},
+        	},
+        	new String[] {
+        		"Aeroporto de Partida", "Aeroporto de Chegada", "Hor\u00E1rio de Partida", "Hor\u00E1rio de Chegada", "Cidade de Partida", "Cidade de Chegada"
+        	}
+        ) {
+        	Class[] columnTypes = new Class[] {
+        		Object.class, Object.class, String.class, Object.class, Object.class, Object.class
+        	};
+        	public Class getColumnClass(int columnIndex) {
+        		return columnTypes[columnIndex];
+        	}
         });
         table.getColumnModel().getColumn(0).setPreferredWidth(114);
         table.getColumnModel().getColumn(1).setPreferredWidth(124);

@@ -1,4 +1,4 @@
-package telas;
+package view;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -8,7 +8,7 @@ import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-public class TelaCriaItinerario {
+public class ViewCriaItinerario {
     private JFrame frame;
     private JLabel background;
     private JTextField cidadedeorigem;
@@ -34,7 +34,7 @@ public class TelaCriaItinerario {
     private JLabel lblHorarioChegada;
     private JLabel lblCidadeOrigem2;
 
-    public TelaCriaItinerario() {
+    public ViewCriaItinerario() {
         frame = new JFrame();
         frame.setBounds(150, 150, 600, 350);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

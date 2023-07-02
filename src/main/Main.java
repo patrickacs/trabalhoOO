@@ -4,13 +4,13 @@ package main;
 import java.util.ArrayList;
 import java.util.Date;
 
-import telas.Menu;
+import view.ViewMenu;
 
 
 
 public class Main {
 	public static void main (String[]args) {
-		Menu window = new Menu();
+		ViewMenu window = new ViewMenu();
 		window.getOriginFrame().setVisible(true);
 	}
 }

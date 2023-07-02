@@ -1,4 +1,4 @@
-package telas;
+package view;
 
 import java.awt.event.*;
 import javax.swing.ImageIcon;
@@ -13,7 +13,7 @@ import java.awt.Font;
  * @since release 1
  */
 
-public class ItinerarioMenu {
+public class ViewCrudItinerario {
     private JFrame frame;
     private JButton btnReservas;
     private JButton btnPassageiros;
@@ -25,9 +25,9 @@ public class ItinerarioMenu {
     /**
      * Construtor da classe ViewFirstScreen, onde é criada a interface gráfica.
      */
-    public ItinerarioMenu() {
+    public ViewCrudItinerario() {
         frame = new JFrame();
-        frame.setBounds(150, 150, 408, 407);
+        frame.setBounds(150, 150, 408, 487);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
@@ -61,11 +61,15 @@ public class ItinerarioMenu {
         frame.getContentPane().add(lblOOAirlines);
         
         /**
-         * Botão Itinerário
+         * Botão Itinerario
          */
         btnItinerario = new JButton("Lista");
+        btnItinerario.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
         btnItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnItinerario.setBounds(91, 241, 210, 45);
+        btnItinerario.setBounds(91, 297, 210, 45);
         frame.getContentPane().add(btnItinerario);
         
         btnSair = new JButton("Sair");
@@ -74,12 +78,17 @@ public class ItinerarioMenu {
         	}
         });
         btnSair.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnSair.setBounds(91, 297, 210, 45);
+        btnSair.setBounds(91, 354, 210, 45);
         frame.getContentPane().add(btnSair);
         
                 background = new JLabel("");
                 background.setBounds(-51, -74, 875, 843);
                 frame.getContentPane().add(background);
+                
+                JButton btnRemover = new JButton("Remover");
+                btnRemover.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
+                btnRemover.setBounds(91, 241, 210, 45);
+                frame.getContentPane().add(btnRemover);
        
 
                                

@@ -3,10 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package negocio;
+package controller;
 
 import dados.Banco;
-import entidades.Aeroporto;
+import model.Aeroporto;
+
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
 

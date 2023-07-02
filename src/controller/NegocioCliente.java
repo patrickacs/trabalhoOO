@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package negocio;
+package controller;
 
 import dados.Banco;
-import entidades.PessoaFisica;
-import entidades.PessoaJuridica;
+import model.PessoaFisica;
+import model.PessoaJuridica;
 import Telas.Clientes;
 import javax.swing.JOptionPane;
 import java.util.Hashtable;

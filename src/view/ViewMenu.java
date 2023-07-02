@@ -1,4 +1,4 @@
-package telas;
+package view;
 
 import java.awt.event.*;
 import javax.swing.ImageIcon;
@@ -13,7 +13,7 @@ import java.awt.Font;
  * @since release 1
  */
 
-public class CRUDItinerario {
+public class ViewMenu {
     private JFrame frame;
     private JButton btnReservas;
     private JButton btnPassageiros;
@@ -25,7 +25,7 @@ public class CRUDItinerario {
     /**
      * Construtor da classe ViewFirstScreen, onde é criada a interface gráfica.
      */
-    public CRUDItinerario() {
+    public ViewMenu() {
         frame = new JFrame();
         frame.setBounds(150, 150, 600, 550);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -55,19 +55,15 @@ public class CRUDItinerario {
         /**
          * Label OOAirlines
          */
-        lblOOAirlines = new JLabel("Itinerario");
+        lblOOAirlines = new JLabel("OOAirlines");
         lblOOAirlines.setFont(new Font("Segoe UI Semibold", Font.BOLD, 32));
-        lblOOAirlines.setBounds(215, 28, 155, 61);
+        lblOOAirlines.setBounds(200, 21, 155, 61);
         frame.getContentPane().add(lblOOAirlines);
         
         /**
-         * Botão Itinerário
+         * Botão Itinerario
          */
         btnItinerario = new JButton("Itinerario");
-        btnItinerario.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
         btnItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
         btnItinerario.setBounds(170, 237, 210, 45);
         frame.getContentPane().add(btnItinerario);
@@ -75,6 +71,7 @@ public class CRUDItinerario {
         btnSair = new JButton("Sair");
         btnSair.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		frame.dispose();
         	}
         });
         btnSair.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));

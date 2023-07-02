@@ -1,4 +1,4 @@
- package telas;
+ package view;
 
 import java.awt.event.*;
 import javax.swing.ImageIcon;
@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  * @since release 1
  */
 
-public class ReservaTela {
+public class ViewReservaTela {
     private JFrame frame;
     private JLabel background;
     private JTextField textField;
@@ -41,7 +41,7 @@ public class ReservaTela {
     /**
      * Construtor da classe ViewFirstScreen, onde é criada a interface gráfica.
      */
-    public ReservaTela() {
+    public ViewReservaTela() {
         frame = new JFrame();
         frame.setBounds(150, 150, 600, 550);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

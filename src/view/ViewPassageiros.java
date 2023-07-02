@@ -1,4 +1,4 @@
-package telas;
+package view;
 //tentar mudar o package de Telas para telas pois um dos erros é ele estar com capital letter
 
 import java.awt.event.*;
@@ -18,7 +18,7 @@ import javax.swing.DefaultComboBoxModel;
  * @since release 1
  */
 
-public class Clientes {
+public class ViewPassageiros {
     
     private JFrame frame;
     private JLabel background;
@@ -42,7 +42,7 @@ public class Clientes {
     /**
      * Construtor da classe ViewFirstScreen, onde é criada a interface gráfica.
      */
-    public Clientes() {
+    public ViewPassageiros() {
         frame = new JFrame();
         frame.setBounds(150, 150, 600, 550);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -131,9 +131,9 @@ public class Clientes {
         /**
          * Label Novo Cliente
          */
-        lblNovoCliente = new JLabel("Novo Cliente");
+        lblNovoCliente = new JLabel("Novo Passageiro");
         lblNovoCliente.setFont(new Font("Segoe UI Semibold", Font.BOLD, 22));
-        lblNovoCliente.setBounds(214, 11, 137, 29);
+        lblNovoCliente.setBounds(193, 24, 169, 29);
         frame.getContentPane().add(lblNovoCliente);
         
         /**
@@ -145,7 +145,7 @@ public class Clientes {
         frame.getContentPane().add(lblNomeCompleto);
 
         /**
-         * Label Endereço
+         * Label Endereco
          */
         lblEndereco = new JLabel("Endereco:");
         lblEndereco.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));

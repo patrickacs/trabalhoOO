@@ -1,4 +1,4 @@
-package telas;
+package view;
 
 import java.awt.event.*;
 import javax.swing.ImageIcon;
@@ -13,7 +13,7 @@ import java.awt.Font;
  * @since release 1
  */
 
-public class Menu {
+public class ViewCrudPassageiro {
     private JFrame frame;
     private JButton btnReservas;
     private JButton btnPassageiros;
@@ -25,9 +25,9 @@ public class Menu {
     /**
      * Construtor da classe ViewFirstScreen, onde é criada a interface gráfica.
      */
-    public Menu() {
+    public ViewCrudPassageiro() {
         frame = new JFrame();
-        frame.setBounds(150, 150, 600, 550);
+        frame.setBounds(150, 150, 408, 407);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
@@ -35,47 +35,50 @@ public class Menu {
         /**
          * Botão Passageiros
          */
-        btnPassageiros = new JButton("Passageiros");
+        btnPassageiros = new JButton("Criar");
         btnPassageiros.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         	}
         });
         btnPassageiros.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnPassageiros.setBounds(170, 125, 210, 45);
+        btnPassageiros.setBounds(91, 129, 210, 45);
         frame.getContentPane().add(btnPassageiros);
 
         /**
          * Botão Reservas
          */
-        btnReservas = new JButton("Reservas");
+        btnReservas = new JButton("Editar");
         btnReservas.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnReservas.setBounds(170, 181, 210, 45);
+        btnReservas.setBounds(91, 185, 210, 45);
         frame.getContentPane().add(btnReservas);
         
         /**
          * Label OOAirlines
          */
-        lblOOAirlines = new JLabel("OOAirlines");
+        lblOOAirlines = new JLabel("Passageiro");
         lblOOAirlines.setFont(new Font("Segoe UI Semibold", Font.BOLD, 32));
-        lblOOAirlines.setBounds(200, 21, 155, 61);
+        lblOOAirlines.setBounds(108, 32, 193, 61);
         frame.getContentPane().add(lblOOAirlines);
         
         /**
-         * Botão Itinerario
+         * Botão Itinerário
          */
-        btnItinerario = new JButton("Itinerario");
+        btnItinerario = new JButton("Remover");
+        btnItinerario.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
         btnItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnItinerario.setBounds(170, 237, 210, 45);
+        btnItinerario.setBounds(91, 241, 210, 45);
         frame.getContentPane().add(btnItinerario);
         
         btnSair = new JButton("Sair");
         btnSair.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
-        		frame.dispose();
         	}
         });
         btnSair.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnSair.setBounds(170, 293, 210, 45);
+        btnSair.setBounds(91, 297, 210, 45);
         frame.getContentPane().add(btnSair);
         
                 background = new JLabel("");
