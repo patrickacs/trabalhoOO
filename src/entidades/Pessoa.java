@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Artur Pereira e Patrick Anderson
  */
-public abstract class Pessoa {    
+public class Pessoa {    
     protected String endereco;
     protected String tel1;
     protected String tel2;

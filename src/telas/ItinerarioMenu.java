@@ -27,7 +27,7 @@ public class ItinerarioMenu {
      */
     public ItinerarioMenu() {
         frame = new JFrame();
-        frame.setBounds(150, 150, 600, 550);
+        frame.setBounds(150, 150, 408, 407);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
@@ -35,21 +35,21 @@ public class ItinerarioMenu {
         /**
          * Botão Passageiros
          */
-        btnPassageiros = new JButton("Passageiros");
+        btnPassageiros = new JButton("Criar");
         btnPassageiros.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
         	}
         });
         btnPassageiros.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnPassageiros.setBounds(170, 125, 210, 45);
+        btnPassageiros.setBounds(91, 129, 210, 45);
         frame.getContentPane().add(btnPassageiros);
 
         /**
          * Botão Reservas
          */
-        btnReservas = new JButton("Reservas");
+        btnReservas = new JButton("Editar");
         btnReservas.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnReservas.setBounds(170, 181, 210, 45);
+        btnReservas.setBounds(91, 185, 210, 45);
         frame.getContentPane().add(btnReservas);
         
         /**
@@ -57,15 +57,15 @@ public class ItinerarioMenu {
          */
         lblOOAirlines = new JLabel("Itinerario");
         lblOOAirlines.setFont(new Font("Segoe UI Semibold", Font.BOLD, 32));
-        lblOOAirlines.setBounds(215, 28, 155, 61);
+        lblOOAirlines.setBounds(123, 31, 155, 61);
         frame.getContentPane().add(lblOOAirlines);
         
         /**
          * Botão Itinerário
          */
-        btnItinerario = new JButton("Itinerário");
+        btnItinerario = new JButton("Lista");
         btnItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnItinerario.setBounds(170, 237, 210, 45);
+        btnItinerario.setBounds(91, 241, 210, 45);
         frame.getContentPane().add(btnItinerario);
         
         btnSair = new JButton("Sair");
@@ -74,7 +74,7 @@ public class ItinerarioMenu {
         	}
         });
         btnSair.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnSair.setBounds(170, 293, 210, 45);
+        btnSair.setBounds(91, 297, 210, 45);
         frame.getContentPane().add(btnSair);
         
                 background = new JLabel("");

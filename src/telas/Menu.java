@@ -61,9 +61,9 @@ public class Menu {
         frame.getContentPane().add(lblOOAirlines);
         
         /**
-         * Botão Itinerário
+         * Botão Itinerario
          */
-        btnItinerario = new JButton("Itinerário");
+        btnItinerario = new JButton("Itinerario");
         btnItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
         btnItinerario.setBounds(170, 237, 210, 45);
         frame.getContentPane().add(btnItinerario);
@@ -71,6 +71,7 @@ public class Menu {
         btnSair = new JButton("Sair");
         btnSair.addActionListener(new ActionListener() {
         	public void actionPerformed(ActionEvent e) {
+        		frame.dispose();
         	}
         });
         btnSair.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));

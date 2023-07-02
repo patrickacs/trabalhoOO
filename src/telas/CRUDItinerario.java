@@ -63,7 +63,11 @@ public class CRUDItinerario {
         /**
          * Botão Itinerário
          */
-        btnItinerario = new JButton("Itinerário");
+        btnItinerario = new JButton("Itinerario");
+        btnItinerario.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
         btnItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
         btnItinerario.setBounds(170, 237, 210, 45);
         frame.getContentPane().add(btnItinerario);
