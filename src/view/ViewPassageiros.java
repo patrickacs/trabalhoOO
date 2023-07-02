@@ -41,8 +41,9 @@ public class ViewPassageiros {
 
     /**
      * Construtor da classe ViewFirstScreen, onde é criada a interface gráfica.
+     * @param opt 
      */
-    public ViewPassageiros() {
+    public ViewPassageiros(byte opt) {
         frame = new JFrame();
         frame.setBounds(150, 150, 600, 550);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -53,9 +54,19 @@ public class ViewPassageiros {
          * Botão Cancelar
          */
         btnCancelar = new JButton("Cancelar");
-        btnCancelar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 20));
-        btnCancelar.setBounds(376, 434, 145, 42);
+        btnCancelar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
+        btnCancelar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
+        btnCancelar.setBounds(376, 438, 145, 42);
         frame.getContentPane().add(btnCancelar);
+        btnCancelar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Adicione aqui o c�digo para voltar � tela anterior
+                frame.dispose(); // Fecha a tela atual
+            }
+        });
         
         /**
          * Botão Confirmar

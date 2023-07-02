@@ -16,10 +16,10 @@ import java.util.Hashtable;
  *
  * @author Artur Pereira e Patrick Anderson
  */
-public class NegocioCliente extends TelaClientes {
+public class ControladorPassageiro extends TelaClientes {
      private Banco banco;
 
-    public NegocioCliente(byte opt) {
+    public ControladorPassageiro(byte opt) {
         super(opt);
         verificaOperacao();
     }

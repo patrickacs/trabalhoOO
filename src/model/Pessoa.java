@@ -14,7 +14,6 @@ import java.util.ArrayList;
 public class Pessoa {    
     protected String endereco;
     protected String tel1;
-    protected String tel2;
     protected ArrayList<ReservaViagem> reservas = new ArrayList<>();
 
 

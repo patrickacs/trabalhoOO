@@ -1,27 +1,27 @@
- package view;
+package view;
 
-import java.awt.event.*;
-import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
+import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JScrollPane;
-import java.awt.Font;
-import javax.swing.JComboBox;
-import javax.swing.DefaultComboBoxModel;
 import javax.swing.JTable;
+import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Classe respons√°vel pela interface gr√°fica da tela inicial
- * @author Artur Pereira e Patrick Anderson
+ * Classe respons·vel pela interface gr·fica da tela de reserva
+ * 
+ * @author Artur Pereira
  * @since release 1
  */
-
 public class ViewReservaTela {
     private JFrame frame;
-    private JLabel background;
     private JTextField textField;
     private JTextField textField_1;
     private JTable table;
@@ -29,7 +29,7 @@ public class ViewReservaTela {
     private JButton btnCancelar;
     private JButton btnConfirmar;
     private JButton btnOK;
-    private JComboBox comboBox;
+    private JComboBox<String> comboBox;
     private JScrollPane scrollPane;
     private JLabel lblReserva;
     private JLabel lblNome;
@@ -37,9 +37,8 @@ public class ViewReservaTela {
     private JLabel lblItinerario;
     private JScrollPane scrollPane_1;
 
-
     /**
-     * Construtor da classe ViewFirstScreen, onde √© criada a interface gr√°fica.
+     * Construtor da classe ViewReservaTela, onde È criada a interface gr·fica.
      */
     public ViewReservaTela() {
         frame = new JFrame();
@@ -47,31 +46,43 @@ public class ViewReservaTela {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
-        
+
         /**
-         * Bot√£o Cancelar
+         * Bot„o Cancelar
          */
         btnCancelar = new JButton("Cancelar");
+        btnCancelar.addActionListener(new ActionListener() {
+        	public void actionPerformed(ActionEvent e) {
+        	}
+        });
         btnCancelar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         btnCancelar.setBounds(444, 484, 106, 23);
         frame.getContentPane().add(btnCancelar);
+        btnCancelar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Adicione aqui o cÛdigo para voltar ‡ tela anterior
+                frame.dispose(); // Fecha a tela atual
+            }
+        });
+
         
+
         /**
-         * Bot√£o Confirmar
+         * Bot„o Confirmar
          */
         btnConfirmar = new JButton("Confirmar");
         btnConfirmar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         btnConfirmar.setBounds(43, 484, 106, 23);
         frame.getContentPane().add(btnConfirmar);
-        
+
         /**
-         * Bot√£o Confirmar
+         * Bot„o OK
          */
         btnOK = new JButton("OK");
         btnOK.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         btnOK.setBounds(461, 40, 89, 23);
         frame.getContentPane().add(btnOK);
-        
+
         /**
          * Caixas de Preenchimento
          */
@@ -79,21 +90,21 @@ public class ViewReservaTela {
         textField_1.setBounds(77, 74, 359, 20);
         frame.getContentPane().add(textField_1);
         textField_1.setColumns(10);
-        
+
         textField = new JTextField();
         textField.setBounds(77, 41, 359, 20);
         frame.getContentPane().add(textField);
         textField.setColumns(10);
-        
+
         /**
          * Caixas duplas de Preenchimeto CPF/CNPJ
          */
-        comboBox = new JComboBox();
-        comboBox.setModel(new DefaultComboBoxModel(new String[] {" CPF", "CNPJ"}));
+        comboBox = new JComboBox<String>();
+        comboBox.setModel(new DefaultComboBoxModel<String>(new String[] { "CPF", "CNPJ" }));
         comboBox.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         comboBox.setBounds(10, 39, 57, 22);
         frame.getContentPane().add(comboBox);
-        
+
         /**
          * Fundo da tabela
          */
@@ -101,29 +112,16 @@ public class ViewReservaTela {
         scrollPane.setToolTipText("");
         scrollPane.setBounds(33, 317, 517, 156);
         frame.getContentPane().add(scrollPane);
-        
+
         /**
          * Tabela
          */
         table_1 = new JTable();
-        table_1.setModel(new DefaultTableModel(
-        	new Object[][] {
-        		{null},
-        		{null},
-        		{null},
-        		{null},
-        		{null},
-        		{null},
-        		{null},
-        		{null},
-        	},
-        	new String[] {
-        		"Itinerarios"
-        	}
-        ));
+        table_1.setModel(new DefaultTableModel(new Object[][] { { null }, { null }, { null }, { null }, { null },
+                { null }, { null }, { null }, }, new String[] { "Itinerarios" }));
         table_1.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         scrollPane.setViewportView(table_1);
-                
+
         /**
          * Label Reserva
          */
@@ -131,62 +129,113 @@ public class ViewReservaTela {
         lblReserva.setFont(new Font("Segoe UI Semibold", Font.BOLD, 16));
         lblReserva.setBounds(251, 11, 73, 14);
         frame.getContentPane().add(lblReserva);
-                                
+
         /**
-        * Label Nome
-        */
+         * Label Nome
+         */
         lblNome = new JLabel("Nome:");
         lblNome.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         lblNome.setBounds(10, 72, 57, 22);
         frame.getContentPane().add(lblNome);
-                                                
+
         /**
-        * Label Voos
-        */
-        lblVoos = new JLabel("Voos");
+         * Label Voos
+         */
+        lblVoos = new JLabel("Itinerario");
         lblVoos.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
-        lblVoos.setBounds(269, 105, 30, 14);
+        lblVoos.setBounds(251, 108, 73, 14);
         frame.getContentPane().add(lblVoos);
-                                                        
+
         /**
-        * Label Itiner√°rio
-        */
-        lblItinerario = new JLabel("Itinerario");
+         * Label Itiner·rio
+         */
+        lblItinerario = new JLabel("Reservas");
         lblItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         lblItinerario.setBounds(256, 297, 57, 14);
         frame.getContentPane().add(lblItinerario);
-                                                                        
-                                                        
-       scrollPane_1 = new JScrollPane();
-       scrollPane_1.setBounds(33, 133, 517, 141);
-       frame.getContentPane().add(scrollPane_1);
-                                                                        
-       table = new JTable();
-       table.setModel(new DefaultTableModel(
-       new Object[][] {
-            {null},
-            {null},
-            {null},
-            {null},
-            {null},
-            {null},
-            {null},
-                      },
-        new String[] {"Voos"}));
 
+        scrollPane_1 = new JScrollPane();
+        scrollPane_1.setBounds(33, 133, 517, 141);
+        frame.getContentPane().add(scrollPane_1);
+
+        table = new JTable();
+        table.setModel(new DefaultTableModel(new Object[][] { { null }, { null }, { null }, { null }, { null },
+                { null }, { null }, }, new String[] { "Voos" }));
         table.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         scrollPane_1.setViewportView(table);
-        background = new JLabel("");
-        background.setLabelFor(frame);
-        background.setBounds(-93, -22, 875, 843);
-        frame.getContentPane().add(background);
-       
-
-                               
     }
 
-    // leva a tela
+    /**
+     * MÈtodo para obter a referÍncia do JFrame principal.
+     * 
+     * @return JFrame principal.
+     */
     public JFrame getOriginFrame() {
         return frame;
+    }
+
+    /**
+     * MÈtodo para adicionar um ActionListener ao bot„o "Cancelar".
+     * 
+     * @param listener O ActionListener a ser adicionado.
+     */
+    public void addCancelarListener(ActionListener listener) {
+        btnCancelar.addActionListener(listener);
+    }
+
+    /**
+     * MÈtodo para adicionar um ActionListener ao bot„o "Confirmar".
+     * 
+     * @param listener O ActionListener a ser adicionado.
+     */
+    public void addConfirmarListener(ActionListener listener) {
+        btnConfirmar.addActionListener(listener);
+    }
+
+    /**
+     * MÈtodo para adicionar um ActionListener ao bot„o "OK".
+     * 
+     * @param listener O ActionListener a ser adicionado.
+     */
+    public void addOKListener(ActionListener listener) {
+        btnOK.addActionListener(listener);
+    }
+
+    /**
+     * MÈtodo para obter o texto digitado no campo de nome.
+     * 
+     * @return O texto digitado no campo de nome.
+     */
+    public String getNome() {
+        return textField_1.getText();
+    }
+
+    /**
+     * MÈtodo para obter o tipo selecionado no JComboBox.
+     * 
+     * @return O tipo selecionado (CPF ou CNPJ).
+     */
+    public String getTipo() {
+        return comboBox.getSelectedItem().toString();
+    }
+
+    /**
+     * MÈtodo para atualizar a tabela de voos com os dados fornecidos.
+     * 
+     * @param data Os dados a serem exibidos na tabela de voos.
+     */
+    public void updateVoosTable(Object[][] data) {
+        DefaultTableModel model = (DefaultTableModel) table.getModel();
+        model.setDataVector(data, new String[] { "Voos" });
+    }
+
+    /**
+     * MÈtodo para atualizar a tabela de itiner·rios com os dados fornecidos.
+     * 
+     * @param data Os dados a serem exibidos na tabela de itiner·rios.
+     */
+    public void updateItinerariosTable(Object[][] data) {
+        DefaultTableModel model = (DefaultTableModel) table_1.getModel();
+        model.setDataVector(data, new String[] { "Itinerarios" });
     }
 }

@@ -22,6 +22,7 @@ public class ViewCrudPassageiro {
     private JButton btnItinerario;
     private JButton btnSair;
     
+    
     /**
      * Construtor da classe ViewFirstScreen, onde √© criada a interface gr√°fica.
      */
@@ -35,14 +36,33 @@ public class ViewCrudPassageiro {
         /**
          * Bot√£o Passageiros
          */
-        btnPassageiros = new JButton("Criar");
-        btnPassageiros.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
+        btnPassageiros = new JButton("Passageiros");
         btnPassageiros.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnPassageiros.setBounds(91, 129, 210, 45);
+        btnPassageiros.setBounds(170, 125, 210, 45);
         frame.getContentPane().add(btnPassageiros);
+
+        btnPassageiros.addActionListener(new ActionListener() {
+            private boolean buttonClicked = false;
+
+            public void actionPerformed(ActionEvent e) {
+                if (!buttonClicked) {
+                    buttonClicked = true;
+                    btnPassageiros.setEnabled(false);
+
+                    ViewPassageiros window = new ViewPassageiros();
+                    window.getOriginFrame().setVisible(true);
+                    window.getOriginFrame().addWindowListener(new WindowAdapter() {
+                        @Override
+                        public void windowClosed(WindowEvent e) {
+                            btnPassageiros.setEnabled(true); // Reativa o bot„o quando a janela de passageiros for fechada
+                            buttonClicked = false; // Reseta o estado do bot„o
+                        }
+                    });
+                }
+            }
+        });
+
+
 
         /**
          * Bot√£o Reservas
@@ -80,13 +100,15 @@ public class ViewCrudPassageiro {
         btnSair.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
         btnSair.setBounds(91, 297, 210, 45);
         frame.getContentPane().add(btnSair);
-        
+        btnSair.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Adicione aqui o cÛdigo para voltar ‡ tela anterior
+                frame.dispose(); // Fecha a tela atual
+            }});
+ 
                 background = new JLabel("");
                 background.setBounds(-51, -74, 875, 843);
-                frame.getContentPane().add(background);
-       
-
-                               
+                frame.getContentPane().add(background);                
     }
 
     // leva a tela

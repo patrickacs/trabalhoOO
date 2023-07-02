@@ -5,11 +5,12 @@
  */
 package controller;
 
-import Dados.Banco;
-import Entidades.Aeroporto;
-import Entidades.DescricaoAviao;
-import Entidades.DescricaoVoo;
-import Entidades.Voo;
+import dados.Banco;
+
+import model.Aeroporto;
+import model.DescricaoAviao;
+import model.DescricaoVoo;
+import model.Voo;
 import java.util.Hashtable;
 import javax.swing.JOptionPane;
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ import java.util.ArrayList;
  *
  * @author Artur Pereira e Patrick Anderson
  */
-public class NegocioVoo extends Telas.TelaVoos {
+public class ControladorItinerario extends view.TelaVoos {
     
   
     private Banco banco;
@@ -28,7 +29,7 @@ public class NegocioVoo extends Telas.TelaVoos {
     private DescricaoVoo descricaoVoo;
     private Aeroporto aeroporto;
 
-    public NegocioVoo(byte opt) {
+    public ControladorItinerario(byte opt) {
         super(opt);
         verificaOperacao();
         initOperations();

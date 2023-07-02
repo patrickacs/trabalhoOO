@@ -7,6 +7,8 @@ import javax.swing.JTextField;
 import java.awt.Font;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class ViewCriaItinerario {
     private JFrame frame;
@@ -42,10 +44,17 @@ public class ViewCriaItinerario {
         frame.setLocationRelativeTo(null);
 
         btnCancelar = new JButton("Cancelar");
+        btnCancelar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                ViewCrudItinerario crudItinerarioWindow = new ViewCrudItinerario();
+                crudItinerarioWindow.getOriginFrame().setVisible(true);
+                frame.dispose(); // Fecha a tela atual
+            }
+        });
         btnCancelar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         btnCancelar.setBounds(441, 275, 106, 23);
         frame.getContentPane().add(btnCancelar);
-
+        
         btnConfirmar = new JButton("Confirmar");
         btnConfirmar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         btnConfirmar.setBounds(26, 275, 106, 23);
