@@ -8,23 +8,24 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 /**
- * Classe respons√°vel pela interface gr√°fica da tela inicial
- * @author Artur Pereira e Patrick Anderson
- * @since release 1
+ * Classe respons·vel pela interface gr·fica da tela de CRUD de Passageiros.
+ * 
+ * Autor: Artur Pereira e Patrick Anderson
+ * Desde: vers„o 1
  */
 
 public class ViewCrudPassageiro {
     private JFrame frame;
-    private JButton btnReservas;
-    private JButton btnPassageiros;
+    private JButton btnEditar;
+    private JButton btnCriar;
     private JLabel background;
     private JLabel lblOOAirlines;
-    private JButton btnItinerario;
+    private JButton btnRemover;
     private JButton btnSair;
     
     
     /**
-     * Construtor da classe ViewFirstScreen, onde √© criada a interface gr√°fica.
+     * Construtor da classe ViewCrudPassageiro, onde È criada a interface gr·fica.
      */
     public ViewCrudPassageiro() {
         frame = new JFrame();
@@ -34,43 +35,28 @@ public class ViewCrudPassageiro {
         frame.setLocationRelativeTo(null);
 
         /**
-         * Bot√£o Passageiros
+         * Bot„o Criar
          */
-        btnPassageiros = new JButton("Passageiros");
-        btnPassageiros.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnPassageiros.setBounds(170, 125, 210, 45);
-        frame.getContentPane().add(btnPassageiros);
-
-        btnPassageiros.addActionListener(new ActionListener() {
-            private boolean buttonClicked = false;
-
+        btnCriar = new JButton("Criar");
+        btnCriar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                if (!buttonClicked) {
-                    buttonClicked = true;
-                    btnPassageiros.setEnabled(false);
-
-                    ViewPassageiros window = new ViewPassageiros();
-                    window.getOriginFrame().setVisible(true);
-                    window.getOriginFrame().addWindowListener(new WindowAdapter() {
-                        @Override
-                        public void windowClosed(WindowEvent e) {
-                            btnPassageiros.setEnabled(true); // Reativa o bot„o quando a janela de passageiros for fechada
-                            buttonClicked = false; // Reseta o estado do bot„o
-                        }
-                    });
-                }
+                ViewPassageiros passageirosWindow = new ViewPassageiros();
+                passageirosWindow.getOriginFrame().setVisible(true);
+                frame.dispose(); // Fecha a tela atual
             }
         });
-
+        btnCriar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
+        btnCriar.setBounds(91, 129, 210, 45);
+        frame.getContentPane().add(btnCriar);
 
 
         /**
-         * Bot√£o Reservas
+         * Bot„o Editar
          */
-        btnReservas = new JButton("Editar");
-        btnReservas.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnReservas.setBounds(91, 185, 210, 45);
-        frame.getContentPane().add(btnReservas);
+        btnEditar = new JButton("Editar");
+        btnEditar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
+        btnEditar.setBounds(91, 185, 210, 45);
+        frame.getContentPane().add(btnEditar);
         
         /**
          * Label OOAirlines
@@ -81,37 +67,39 @@ public class ViewCrudPassageiro {
         frame.getContentPane().add(lblOOAirlines);
         
         /**
-         * Bot√£o Itiner√°rio
+         * Bot„o Remover
          */
-        btnItinerario = new JButton("Remover");
-        btnItinerario.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
+        btnRemover = new JButton("Remover");
+        btnRemover.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                // Adicione aqui o cÛdigo para remover um passageiro
+            }
         });
-        btnItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnItinerario.setBounds(91, 241, 210, 45);
-        frame.getContentPane().add(btnItinerario);
+        btnRemover.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
+        btnRemover.setBounds(91, 241, 210, 45);
+        frame.getContentPane().add(btnRemover);
         
+        /**
+         * Bot„o Sair
+         */
         btnSair = new JButton("Sair");
         btnSair.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose(); // Fecha a janela atual
+            }
         });
         btnSair.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
         btnSair.setBounds(91, 297, 210, 45);
         frame.getContentPane().add(btnSair);
-        btnSair.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                // Adicione aqui o cÛdigo para voltar ‡ tela anterior
-                frame.dispose(); // Fecha a tela atual
-            }});
- 
-                background = new JLabel("");
-                background.setBounds(-51, -74, 875, 843);
-                frame.getContentPane().add(background);                
+        
+        background = new JLabel("");
+        background.setBounds(-51, -74, 875, 843);
+        frame.getContentPane().add(background);                
     }
 
-    // leva a tela
+    /**
+     * Retorna o JFrame da janela principal.
+     */
     public JFrame getOriginFrame() {
         return frame;
     }

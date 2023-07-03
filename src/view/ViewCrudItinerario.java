@@ -8,22 +8,23 @@ import javax.swing.JLabel;
 import java.awt.Font;
 
 /**
- * Classe respons√°vel pela interface gr√°fica da tela inicial
- * @author Artur Pereira e Patrick Anderson
- * @since release 1
+ * Classe ViewCrudItinerario que representa a interface gr·fica para as operaÁıes de CRUD de Itiner·rios.
+ * 
+ * Autor: Artur Pereira e Patrick Anderson
+ * Desde: vers„o 1
  */
 
 public class ViewCrudItinerario {
     private JFrame frame;
-    private JButton btnReservas;
-    private JButton btnPassageiros;
+    private JButton btnCriar;
+    private JButton btnEditar;
+    private JButton btnLista;
+    private JButton btnSair;
     private JLabel background;
     private JLabel lblOOAirlines;
-    private JButton btnItinerario;
-    private JButton btnSair;
     
     /**
-     * Construtor da classe ViewFirstScreen, onde √© criada a interface gr√°fica.
+     * Construtor da classe ViewCrudItinerario, onde È criada a interface gr·fica.
      */
     public ViewCrudItinerario() {
         frame = new JFrame();
@@ -33,67 +34,54 @@ public class ViewCrudItinerario {
         frame.setLocationRelativeTo(null);
 
         /**
-         * Bot√£o Passageiros
+         * Bot„o Criar
          */
-        btnPassageiros = new JButton("Criar");
-        btnPassageiros.addActionListener(new ActionListener() {
+        btnCriar = new JButton("Criar");
+        btnCriar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 ViewCriaItinerario itinerarioWindow = new ViewCriaItinerario();
                 itinerarioWindow.getOriginFrame().setVisible(true);
                 frame.dispose(); // Fecha a tela atual
             }
         });
-        btnPassageiros.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnPassageiros.setBounds(91, 129, 210, 45);
-        frame.getContentPane().add(btnPassageiros);
+        btnCriar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
+        btnCriar.setBounds(91, 129, 210, 45);
+        frame.getContentPane().add(btnCriar);
 
         /**
-         * Bot√£o Reservas
+         * Bot„o Editar
          */
-        btnReservas = new JButton("Editar");
-        btnReservas.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnReservas.setBounds(91, 185, 210, 45);
-        frame.getContentPane().add(btnReservas);
+        btnEditar = new JButton("Editar");
+        btnEditar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
+        btnEditar.setBounds(91, 185, 210, 45);
+        frame.getContentPane().add(btnEditar);
         
         /**
          * Label OOAirlines
          */
-        lblOOAirlines = new JLabel("Itinerario");
+        lblOOAirlines = new JLabel("Itiner·rio");
         lblOOAirlines.setFont(new Font("Segoe UI Semibold", Font.BOLD, 32));
         lblOOAirlines.setBounds(123, 31, 155, 61);
         frame.getContentPane().add(lblOOAirlines);
         
         /**
-         * Bot√£o Itinerario
+         * Bot„o Lista
          */
-        btnItinerario = new JButton("Lista");
-        btnItinerario.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
-        btnItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnItinerario.setBounds(91, 297, 210, 45);
-        frame.getContentPane().add(btnItinerario);
-        
-        
-        btnSair = new JButton("Sair");
-        btnSair.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        	}
-        });
-        btnSair.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnSair.setBounds(91, 297, 210, 45);
-        frame.getContentPane().add(btnSair);
-        btnSair.addActionListener(new ActionListener() {
+        btnLista = new JButton("Lista");
+        btnLista.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Adicione aqui o cÛdigo para voltar ‡ tela anterior
+                ViewItinerarioList itinerarioListWindow = new ViewItinerarioList();
+                itinerarioListWindow.getOriginFrame().setVisible(true);
                 frame.dispose(); // Fecha a tela atual
-            }});
+            }
+        });
+        btnLista.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
+        btnLista.setBounds(91, 241, 210, 45);
+        frame.getContentPane().add(btnLista);
         
-        
-        btnSair.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnSair.setBounds(91, 354, 210, 45);
-        frame.getContentPane().add(btnSair);
+        /**
+         * Bot„o Sair
+         */
         btnSair = new JButton("Sair");
         btnSair.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
@@ -101,19 +89,13 @@ public class ViewCrudItinerario {
             }
         });
         btnSair.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-        btnSair.setBounds(91, 354, 210, 45);
-        frame.getContentPane().add(btnSair);     
-                
-        JButton btnRemover = new JButton("Remover");
-        btnRemover.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
-                btnRemover.setBounds(91, 241, 210, 45);
-                frame.getContentPane().add(btnRemover);
-       
-
-                               
+        btnSair.setBounds(91, 297, 210, 45);
+        frame.getContentPane().add(btnSair);
     }
 
-    // leva a tela
+    /**
+     * Retorna o JFrame da janela principal.
+     */
     public JFrame getOriginFrame() {
         return frame;
     }

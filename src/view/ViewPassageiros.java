@@ -11,7 +11,7 @@ import java.awt.Font;
 import javax.swing.JTextField;
 import javax.swing.JFormattedTextField;
 import javax.swing.DefaultComboBoxModel;
-
+import controlador.ControladorPassageiro;
 /**
  * Classe responsável pela interface gráfica da tela inicial
  * @author Artur Pereira e Patrick Anderson
@@ -37,19 +37,28 @@ public class ViewPassageiros {
     private JLabel lblSexo;
     private JLabel lblNovoCliente;
     private JLabel lblNascimento;
-
+    private ControladorPassageiro controladorPassageiro;
 
     /**
      * Construtor da classe ViewFirstScreen, onde é criada a interface gráfica.
      * @param opt 
      */
-    public ViewPassageiros(byte opt) {
+
+    private boolean areFieldFilled() {
+        if (nomecompleto.getText().equals("") || endereco.getText().equals("") || formattedTextField.getText().equals("  /  /    ")) {
+            return false;
+        }
+        return true;
+    }
+
+
+    public ViewPassageiros() {
         frame = new JFrame();
         frame.setBounds(150, 150, 600, 550);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
-        
+        controladorPassageiro = new ControladorPassageiro();
         /**
          * Botão Cancelar
          */
@@ -63,7 +72,7 @@ public class ViewPassageiros {
         frame.getContentPane().add(btnCancelar);
         btnCancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Adicione aqui o c�digo para voltar � tela anterior
+
                 frame.dispose(); // Fecha a tela atual
             }
         });
@@ -75,7 +84,17 @@ public class ViewPassageiros {
         btnConfirmar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 20));
         btnConfirmar.setBounds(67, 434, 145, 42);
         frame.getContentPane().add(btnConfirmar);
-        
+        btnConfirmar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                if (areFieldFilled()) {
+                    // public void cadastrarPassageiroFisico(String nome, String CPF, String endereco, byte sexo, String nascimento, String tel1)
+                    controladorPassageiro.cadastrarPassageiroFisico(nomecompleto.getText(), consultar.getText(), endereco.getText(), (byte) comboBoxMF.getSelectedIndex(), formattedTextField.getText(), "tel1");
+                    frame.dispose(); // Fecha a tela atual
+                }                
+
+            }
+        });
+         
         /**
          * Botão Consultar
          */

@@ -9,6 +9,10 @@ import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import controlador.ControladorItinerario;
+import javax.swing.JFormattedTextField;
+import javax.swing.text.MaskFormatter;
+
 
 public class ViewCriaItinerario {
     private JFrame frame;
@@ -36,12 +40,22 @@ public class ViewCriaItinerario {
     private JLabel lblHorarioChegada;
     private JLabel lblCidadeOrigem2;
 
+
+    private boolean areFieldFilled() {
+        if(cidadedeorigem.getText().isEmpty() || aeroportodeorigem.getText().isEmpty() || datadepartida.getText().isEmpty() || aviao.getText().isEmpty() || horariodepartida.getText().isEmpty() || cidadededestino.getText().isEmpty() || aeroportodedestino.getText().isEmpty() || vagasdisponiveis.getText().isEmpty() || horariodechegada.getText().isEmpty()) {
+            return false;
+        }
+        return true;
+    }
+
     public ViewCriaItinerario() {
         frame = new JFrame();
         frame.setBounds(150, 150, 600, 350);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
+
+        ControladorItinerario controladorItinerario = new ControladorItinerario();
 
         btnCancelar = new JButton("Cancelar");
         btnCancelar.addActionListener(new ActionListener() {
@@ -59,9 +73,22 @@ public class ViewCriaItinerario {
         btnConfirmar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         btnConfirmar.setBounds(26, 275, 106, 23);
         frame.getContentPane().add(btnConfirmar);
+        btnConfirmar.addActionListener(
+            new ActionListener() {
+                public void actionPerformed(ActionEvent e) {
+                    if(areFieldFilled()) {
+                        controladorItinerario.criaVoo(datadepartida.getText(), Integer.parseInt(vagasdisponiveis.getText()), horariodepartida.getText(), horariodechegada.getText(), aeroportodeorigem.getText(), aeroportodedestino.getText(), aviao.getText());
+                        ViewCrudItinerario crudItinerarioWindow = new ViewCrudItinerario();
+                        crudItinerarioWindow.getOriginFrame().setVisible(true);
+                        frame.dispose(); // Fecha a tela atual
+                        
+                    }
+                }
+            }
+        );
+
 
         comboBoxCliente = new JComboBox<>();
-        comboBoxCliente.setModel(new DefaultComboBoxModel<>(new String[] {"Cliente"}));
         comboBoxCliente.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         comboBoxCliente.setBounds(10, 41, 537, 22);
         frame.getContentPane().add(comboBoxCliente);
@@ -91,12 +118,16 @@ public class ViewCriaItinerario {
         frame.getContentPane().add(aeroportodeorigem);
         aeroportodeorigem.setColumns(10);
 
-        datadepartida = new JTextField();
-        datadepartida.setText("  /  /    ");
+        JFormattedTextField datadepartida;
+        try {
+            MaskFormatter maskFormatter = new MaskFormatter("##/##/####");
+            datadepartida = new JFormattedTextField(maskFormatter);
+        } catch (Exception e) {
+            datadepartida = new JFormattedTextField();
+        }
         datadepartida.setBounds(134, 146, 138, 20);
         frame.getContentPane().add(datadepartida);
-        datadepartida.setColumns(10);
-
+        
         aviao = new JTextField();
         aviao.setBounds(134, 177, 138, 20);
         frame.getContentPane().add(aviao);
@@ -163,10 +194,10 @@ public class ViewCriaItinerario {
         background.setBounds(-93, -51, 875, 872);
         frame.getContentPane().add(background);
         
-                lblCidadeOrigem2 = new JLabel("Cidade de Origem:");
-                lblCidadeOrigem2.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
-                lblCidadeOrigem2.setBounds(282, 82, 122, 22);
-                frame.getContentPane().add(lblCidadeOrigem2);
+        lblCidadeOrigem2 = new JLabel("Cidade de Origem:");
+        lblCidadeOrigem2.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
+        lblCidadeOrigem2.setBounds(282, 82, 122, 22);
+        frame.getContentPane().add(lblCidadeOrigem2);
     }
 
     public JFrame getOriginFrame() {

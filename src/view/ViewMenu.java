@@ -1,24 +1,17 @@
 package view;
 
-
-
-import controller.*;
 import java.awt.event.*;
-import java.awt.event.ActionListener;
-import java.text.SimpleDateFormat;
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import java.awt.Font;
 
-
 /**
- * Classe respons√°vel pela interface gr√°fica da tela inicial
- * @author Artur Pereira e Patrick Anderson
- * @since release 1
+ * Classe responsvel pela interface grfica da tela inicial
+ * 
+ * @author Artur Pereira
+ * @since 2023-07-02
  */
-
 public class ViewMenu {
     private JFrame frame;
     private JButton btnReservas;
@@ -27,9 +20,9 @@ public class ViewMenu {
     private JLabel lblOOAirlines;
     private JButton btnItinerario;
     private JButton btnSair;
-    
+
     /**
-     * Construtor da classe ViewFirstScreen, onde √© criada a interface gr√°fica.
+     * Construtor da classe ViewMenu, onde  criada a interface grfica.
      */
     public ViewMenu() {
         frame = new JFrame();
@@ -37,9 +30,9 @@ public class ViewMenu {
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.getContentPane().setLayout(null);
         frame.setLocationRelativeTo(null);
- 
+
         /**
-         * Bot„o Passageiros
+         * Boto Passageiros
          */
         btnPassageiros = new JButton("Passageiros");
         btnPassageiros.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
@@ -59,18 +52,16 @@ public class ViewMenu {
                     window.getOriginFrame().addWindowListener(new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
-                            btnPassageiros.setEnabled(true); // Reativa o bot„o quando a janela de passageiros for fechada
-                            buttonClicked = false; // Reseta o estado do bot„o
+                            btnPassageiros.setEnabled(true);
+                            buttonClicked = false;
                         }
                     });
-
-                    // Adicione o cÛdigo adicional aqui, se necess·rio
                 }
             }
         });
 
         /**
-         * Bot„o Reservas
+         * Boto Reservas
          */
         btnReservas = new JButton("Reservas");
         btnReservas.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
@@ -90,17 +81,13 @@ public class ViewMenu {
                     window.getOriginFrame().addWindowListener(new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
-                            btnReservas.setEnabled(true); // Reativa o bot„o quando a janela de reservas for fechada
-                            buttonClicked = false; // Reseta o estado do bot„o
+                            btnReservas.setEnabled(true);
+                            buttonClicked = false;
                         }
                     });
-                    
-                    // Adicione cÛdigo adicional aqui, se necess·rio
-                    
                 }
             }
         });
-
 
         /**
          * Label OOAirlines
@@ -109,9 +96,9 @@ public class ViewMenu {
         lblOOAirlines.setFont(new Font("Segoe UI Semibold", Font.BOLD, 32));
         lblOOAirlines.setBounds(200, 21, 155, 61);
         frame.getContentPane().add(lblOOAirlines);
-        
+
         /**
-         * Bot√£o Itinerario
+         * Boto Itinerario
          */
         btnItinerario = new JButton("Itinerario");
         btnItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
@@ -131,37 +118,34 @@ public class ViewMenu {
                     window.getOriginFrame().addWindowListener(new WindowAdapter() {
                         @Override
                         public void windowClosed(WindowEvent e) {
-                            btnItinerario.setEnabled(true); // Reativa o bot„o quando a janela de itiner·rio for fechada
-                            buttonClicked = false; // Reseta o estado do bot„o
+                            btnItinerario.setEnabled(true);
+                            buttonClicked = false;
                         }
                     });
-
-                    // Adicione cÛdigo adicional aqui, se necess·rio
-
                 }
             }
         });
 
-        
         btnSair = new JButton("Sair");
         btnSair.addActionListener(new ActionListener() {
-        	public void actionPerformed(ActionEvent e) {
-        		frame.dispose();
-        	}
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
         });
         btnSair.setFont(new Font("Segoe UI Semibold", Font.BOLD, 18));
         btnSair.setBounds(170, 293, 210, 45);
         frame.getContentPane().add(btnSair);
-        
-                background = new JLabel("");
-                background.setBounds(-51, -74, 875, 843);
-                frame.getContentPane().add(background);
-       
 
-                               
+        background = new JLabel("");
+        background.setBounds(-51, -74, 875, 843);
+        frame.getContentPane().add(background);
     }
 
-    // leva a tela
+    /**
+     * Retorna o JFrame da tela.
+     * 
+     * @return o JFrame da tela
+     */
     public JFrame getOriginFrame() {
         return frame;
     }

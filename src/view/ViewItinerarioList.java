@@ -11,35 +11,43 @@ import java.awt.Font;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import java.awt.Color;
+import javax.swing.JList;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
+import javax.swing.DefaultListModel;
+import java.util.ArrayList;
+import model.Voo;
+import controlador.ControladorItinerario;
 
 /**
- * Classe respons√°vel pela interface gr√°fica da tela inicial
+ * Classe respons·vel pela interface gr·fica da tela de listagem de itiner·rios.
  * 
- * @author Artur Pereira e Patrick Anderson
- * @since release 1
+ * Autor: Patrick Anderson
+ * Desde: vers„o 1
  */
 
 public class ViewItinerarioList {
     private JFrame frame;
     private JLabel background;
     private JTable table;
-    private JTextField textField;
-    private JTextField textField_1;
-    private JTextField textField_2;
+    private JTextField campoOrigem;
+    private JTextField campoData;
+    private JTextField campoDestino;
     private JLabel lblBuscar;
     private JButton btnConfirmar;
     private JLabel lblItinerario;
     private JScrollPane scrollPane;
-    private JLabel lblNome;
+    private JLabel lblOrigem;
     private JLabel lblData;
-    private JLabel lblLocal;
+    private JLabel lblDestino;
     private JButton btnVoltar;
 
-
     /**
-     * Construtor da classe ViewFirstScreen, onde √© criada a interface gr√°fica.
+     * Construtor da classe ViewItinerarioList, onde È criada a interface gr·fica.
      */
     public ViewItinerarioList() {
+        ControladorItinerario controladorItinerario = new ControladorItinerario();
+
         frame = new JFrame();
         frame.setBounds(150, 150, 829, 550);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,19 +55,46 @@ public class ViewItinerarioList {
         frame.setLocationRelativeTo(null);
 
         /**
-         * Bot√£o de Voltar
+         * Bot„o de Voltar
          */
         btnVoltar = new JButton("Voltar");
         btnVoltar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         btnVoltar.setBounds(638, 422, 123, 23);
+        btnVoltar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                frame.dispose();
+            }
+        });
         frame.getContentPane().add(btnVoltar);
 
         /**
-         * Bot√£o de Confirmar
+         * Bot„o de Confirmar
          */
         btnConfirmar = new JButton("Confirmar");
         btnConfirmar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
+                // ObtÈm os valores dos campos de pesquisa
+                String origem = campoOrigem.getText();
+                String destino = campoDestino.getText();
+                String data = campoData.getText();
+
+                // Chama o mÈtodo de pesquisa do controlador de itiner·rio
+                ArrayList<Voo> voosEncontrados = controladorItinerario.pesquisarVoos(origem, destino, data);
+
+                // Atualiza o modelo da tabela com os resultados da pesquisa
+                DefaultTableModel model = (DefaultTableModel) table.getModel();
+                model.setRowCount(0); // Limpa os dados existentes na tabela
+
+                for (Voo voo : voosEncontrados) {
+                    String[] rowData = {
+                        voo.getAeroportoOrigem(),
+                        voo.getAeroportoChegada(),
+                        voo.getHorarioPartida(),
+                        voo.getHorarioChegada(),
+                        voo.getData()
+                    };
+                    model.addRow(rowData);
+                }
             }
         });
         btnConfirmar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
@@ -67,48 +102,51 @@ public class ViewItinerarioList {
         frame.getContentPane().add(btnConfirmar);
 
         /**
-         * Label Itiner√°rio
+         * Label Itiner·rio
          */
-        lblItinerario = new JLabel("     Itinerario");
+        lblItinerario = new JLabel("Itiner·rio");
         lblItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 20));
         lblItinerario.setBounds(211, 11, 148, 48);
         frame.getContentPane().add(lblItinerario);
 
-        /**
-         * Fundo para a tabela
-         */
-        scrollPane = new JScrollPane();
-        scrollPane.setBounds(39, 176, 722, 187);
-        frame.getContentPane().add(scrollPane);
-
-        /**
-         * Tabela de Itiner√°rio
-         */
         table = new JTable();
-        table.setForeground(new Color(0, 0, 0));
-        table.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
-        table.setModel(new DefaultTableModel(
-        	new Object[][] {
-        		{null, null, null, null, null, null},
-        	},
-        	new String[] {
-        		"Aeroporto de Partida", "Aeroporto de Chegada", "Hor\u00E1rio de Partida", "Hor\u00E1rio de Chegada", "Cidade de Partida", "Cidade de Chegada"
-        	}
-        ) {
-        	Class[] columnTypes = new Class[] {
-        		Object.class, Object.class, String.class, Object.class, Object.class, Object.class
-        	};
-        	public Class getColumnClass(int columnIndex) {
-        		return columnTypes[columnIndex];
-        	}
-        });
-        table.getColumnModel().getColumn(0).setPreferredWidth(114);
-        table.getColumnModel().getColumn(1).setPreferredWidth(124);
+        DefaultTableModel model = new DefaultTableModel(
+            new Object[][] {},
+            new String[] {
+                "Aeroporto de Partida", "Aeroporto de Chegada", "Hor·rio de Partida",
+                "Hor·rio de Chegada", "Data"
+            }
+        );
+
+        // ObtÈm os voos e os adiciona ao modelo da tabela
+        ArrayList<Voo> voosEncontrados = controladorItinerario.listarVoos();
+        for (Voo voo : voosEncontrados) {
+            String[] rowData = {
+                voo.getAeroportoOrigem(),
+                voo.getAeroportoChegada(),
+                voo.getHorarioPartida(),
+                voo.getHorarioChegada(),
+                voo.getData()
+            };
+            model.addRow(rowData);
+        }
+
+        // Define o modelo da tabela
+        table.setModel(model);
+
+        // Define o tamanho preferencial das colunas
+        table.getColumnModel().getColumn(0).setPreferredWidth(120);
+        table.getColumnModel().getColumn(1).setPreferredWidth(120);
         table.getColumnModel().getColumn(2).setPreferredWidth(120);
-        table.getColumnModel().getColumn(3).setPreferredWidth(126);
-        table.getColumnModel().getColumn(4).setPreferredWidth(101);
-        table.getColumnModel().getColumn(5).setPreferredWidth(122);
-        scrollPane.setViewportView(table);
+        table.getColumnModel().getColumn(3).setPreferredWidth(120);
+        table.getColumnModel().getColumn(4).setPreferredWidth(120);
+
+        // Cria um JScrollPane para a tabela
+        JScrollPane scrollPane = new JScrollPane(table);
+        scrollPane.setBounds(40, 170, 700, 250);
+
+        // Adicione o JScrollPane ao seu componente, como necess·rio
+        frame.getContentPane().add(scrollPane);
 
         /**
          * Label de Buscar
@@ -119,12 +157,12 @@ public class ViewItinerarioList {
         frame.getContentPane().add(lblBuscar);
 
         /**
-         * Label Nome
+         * Label Origem
          */
-        lblNome = new JLabel("Nome");
-        lblNome.setFont(new Font("Segoe UI Semibold", Font.BOLD, 14));
-        lblNome.setBounds(97, 77, 58, 23);
-        frame.getContentPane().add(lblNome);
+        lblOrigem = new JLabel("Origem");
+        lblOrigem.setFont(new Font("Segoe UI Semibold", Font.BOLD, 14));
+        lblOrigem.setBounds(97, 77, 58, 23);
+        frame.getContentPane().add(lblOrigem);
 
         /**
          * Label Data
@@ -137,40 +175,39 @@ public class ViewItinerarioList {
         /**
          * Campos de Preenchimento
          */
-        textField = new JTextField();
-        textField.setBounds(148, 80, 159, 20);
-        frame.getContentPane().add(textField);
-        textField.setColumns(10);
+        campoOrigem = new JTextField();
+        campoOrigem.setBounds(148, 80, 159, 20);
+        frame.getContentPane().add(campoOrigem);
+        campoOrigem.setColumns(10);
 
-        textField_1 = new JTextField();
-        textField_1.setBounds(148, 111, 159, 20);
-        frame.getContentPane().add(textField_1);
-        textField_1.setColumns(10);
-
-        /**
-         * Label Local
-         */
-        lblLocal = new JLabel("Local:");
-        lblLocal.setFont(new Font("Segoe UI Semibold", Font.BOLD, 14));
-        lblLocal.setBounds(569, 77, 44, 23);
-        frame.getContentPane().add(lblLocal);
+        campoData = new JTextField();
+        campoData.setBounds(148, 111, 159, 20);
+        frame.getContentPane().add(campoData);
+        campoData.setColumns(10);
 
         /**
-         * Caixa de Preenchimento
+         * Label Destino
          */
-        textField_2 = new JTextField();
-        textField_2.setBounds(613, 80, 148, 20);
-        frame.getContentPane().add(textField_2);
-        textField_2.setColumns(10);
+        lblDestino = new JLabel("Destino:");
+        lblDestino.setFont(new Font("Segoe UI Semibold", Font.BOLD, 14));
+        lblDestino.setBounds(555, 77, 58, 23);
+        frame.getContentPane().add(lblDestino);
+
+        /**
+         * Campo de Preenchimento
+         */
+        campoDestino = new JTextField();
+        campoDestino.setBounds(613, 80, 148, 20);
+        frame.getContentPane().add(campoDestino);
+        campoDestino.setColumns(10);
 
         background = new JLabel("");
         background.setLabelFor(frame);
         background.setBounds(-114, -37, 875, 843);
         frame.getContentPane().add(background);
-
     }
 
-    // leva a tela
+    // ObtÈm a tela
     public JFrame getOriginFrame() {
         return frame;
     }

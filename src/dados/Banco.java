@@ -4,76 +4,101 @@
  */
 package dados;
 
-/**
- *
- * @author pande
- */
-
 import java.util.ArrayList;
 import java.util.Hashtable;
-import Entidades.PessoaFisica;
-import Entidades.PessoaJuridica;
-import Entidades.DescricaoVoo;
-import Entidades.Voo;
-import Entidades.DescricaoAviao;
-import Entidades.Aeroporto;
-
-
-public class Banco {
-    
-    
-    
-   private Hashtable<String,PessoaFisica> pessoaFisicaHTable;
-   private Hashtable<String,PessoaJuridica> pessoaJuridicaHTable;
-   private ArrayList<DescricaoVoo> arrayDescricaoVoos;
-   private ArrayList<Voo> arrayVoos;
-   private ArrayList<DescricaoAviao> arrayDescricaoAviao;
-   private ArrayList<Aeroporto> arrayAeroporto;
-    
-    
-    private Banco (){
-    
-       this.pessoaFisicaHTable = new Hashtable <>();
-       this.pessoaJuridicaHTable = new Hashtable <>();
-       this.arrayDescricaoVoos = new ArrayList<>();
-       this.arrayVoos = new ArrayList<>();
-       this.arrayDescricaoAviao = new ArrayList<>();
-       this.arrayAeroporto = new ArrayList<>();
-        
-        
-    }
-    private static Banco instancia;
+import model.PessoaFisica;
+import model.PessoaJuridica;
+import model.Voo;
 
 /**
- * ObtÃ©m a instÃ¢ncia Ãºnica da classe Database.
- *
- * @return a instÃ¢ncia da classe Database.
+ * Classe responsável por armazenar os dados do sistema.
  */
-public static Banco getInstance() {
-    if (instancia == null) {
-        instancia = new Banco();
-    }
-    return instancia;
-}
-public ArrayList<Aeroporto> getAeroportos(){
- 
-    return this.arrayAeroporto;
-}
- public Hashtable<String,PessoaFisica> getPessoasFisicas(){
-     
-     return this.pessoaFisicaHTable;
- }
-public Hashtable<String,PessoaJuridica> getPessoasJuridicas(){
-     
-     return this.pessoaJuridicaHTable;
- }
-public ArrayList<Voo> getReservavoo(){
-    
-    return this.arrayVoos;
-}
-public ArrayList<DescricaoAviao> getDescricaoAviao(){
-    
-    return this.arrayDescricaoAviao;
-}
-}
+public class Banco {
 
+    private Hashtable<String, PessoaFisica> pessoaFisicaHTable;
+    private Hashtable<String, PessoaJuridica> pessoaJuridicaHTable;
+    private ArrayList<Voo> arrayVoos;
+
+    private Banco() {
+        this.pessoaFisicaHTable = new Hashtable<>();
+        this.pessoaJuridicaHTable = new Hashtable<>();
+        this.arrayVoos = new ArrayList<>();
+    }
+
+    private static Banco instancia;
+
+    /**
+     * Obtém a instância única da classe Banco.
+     *
+     * @return a instância da classe Banco.
+     */
+    public static Banco getInstance() {
+        if (instancia == null) {
+            instancia = new Banco();
+        }
+        return instancia;
+    }
+
+    /**
+     * Obtém a tabela de pessoas físicas.
+     *
+     * @return a tabela de pessoas físicas.
+     */
+    public Hashtable<String, PessoaFisica> getPessoasFisicas() {
+        return this.pessoaFisicaHTable;
+    }
+
+    /**
+     * Obtém a tabela de pessoas jurídicas.
+     *
+     * @return a tabela de pessoas jurídicas.
+     */
+    public Hashtable<String, PessoaJuridica> getPessoasJuridicas() {
+        return this.pessoaJuridicaHTable;
+    }
+
+    /**
+     * Obtém a lista de voos reservados.
+     *
+     * @return a lista de voos reservados.
+     */
+    public ArrayList<Voo> getReservavoo() {
+        return this.arrayVoos;
+    }
+
+    /**
+     * Adiciona um voo à lista de voos.
+     *
+     * @param voo o voo a ser adicionado.
+     */
+    public void addVoo(Voo voo) {
+        this.arrayVoos.add(voo);
+    }
+
+    /**
+     * Obtém a lista de voos.
+     *
+     * @return a lista de voos.
+     */
+    public ArrayList<Voo> getVoos() {
+        return this.arrayVoos;
+    }
+
+    /**
+     * Adiciona uma pessoa física à tabela de pessoas físicas.
+     *
+     * @param pessoaFisica a pessoa física a ser adicionada.
+     */
+    public void addPessoaFisica(PessoaFisica pessoaFisica) {
+        this.pessoaFisicaHTable.put(pessoaFisica.getCPF(), pessoaFisica);
+    }
+
+    /**
+     * Adiciona uma pessoa jurídica à tabela de pessoas jurídicas.
+     *
+     * @param pessoaJuridica a pessoa jurídica a ser adicionada.
+     */
+    public void addPessoaJuridica(PessoaJuridica pessoaJuridica) {
+        this.pessoaJuridicaHTable.put(pessoaJuridica.getCNPJ(), pessoaJuridica);
+    }
+}

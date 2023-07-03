@@ -15,7 +15,7 @@ import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Classe responsável pela interface gráfica da tela de reserva
+ * Classe responsï¿½vel pela interface grï¿½fica da tela de reserva
  * 
  * @author Artur Pereira
  * @since release 1
@@ -38,7 +38,7 @@ public class ViewReservaTela {
     private JScrollPane scrollPane_1;
 
     /**
-     * Construtor da classe ViewReservaTela, onde é criada a interface gráfica.
+     * Construtor da classe ViewReservaTela, onde ï¿½ criada a interface grï¿½fica.
      */
     public ViewReservaTela() {
         frame = new JFrame();
@@ -48,7 +48,7 @@ public class ViewReservaTela {
         frame.setLocationRelativeTo(null);
 
         /**
-         * Botão Cancelar
+         * Botï¿½o Cancelar
          */
         btnCancelar = new JButton("Cancelar");
         btnCancelar.addActionListener(new ActionListener() {
@@ -60,7 +60,7 @@ public class ViewReservaTela {
         frame.getContentPane().add(btnCancelar);
         btnCancelar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Adicione aqui o código para voltar à tela anterior
+                // Adicione aqui o cï¿½digo para voltar ï¿½ tela anterior
                 frame.dispose(); // Fecha a tela atual
             }
         });
@@ -68,7 +68,7 @@ public class ViewReservaTela {
         
 
         /**
-         * Botão Confirmar
+         * Botï¿½o Confirmar
          */
         btnConfirmar = new JButton("Confirmar");
         btnConfirmar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
@@ -76,7 +76,7 @@ public class ViewReservaTela {
         frame.getContentPane().add(btnConfirmar);
 
         /**
-         * Botão OK
+         * Botï¿½o OK
          */
         btnOK = new JButton("OK");
         btnOK.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
@@ -147,7 +147,7 @@ public class ViewReservaTela {
         frame.getContentPane().add(lblVoos);
 
         /**
-         * Label Itinerário
+         * Label Itinerï¿½rio
          */
         lblItinerario = new JLabel("Reservas");
         lblItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
@@ -166,7 +166,7 @@ public class ViewReservaTela {
     }
 
     /**
-     * Método para obter a referência do JFrame principal.
+     * Mï¿½todo para obter a referï¿½ncia do JFrame principal.
      * 
      * @return JFrame principal.
      */
@@ -175,7 +175,7 @@ public class ViewReservaTela {
     }
 
     /**
-     * Método para adicionar um ActionListener ao botão "Cancelar".
+     * Mï¿½todo para adicionar um ActionListener ao botï¿½o "Cancelar".
      * 
      * @param listener O ActionListener a ser adicionado.
      */
@@ -184,7 +184,7 @@ public class ViewReservaTela {
     }
 
     /**
-     * Método para adicionar um ActionListener ao botão "Confirmar".
+     * Mï¿½todo para adicionar um ActionListener ao botï¿½o "Confirmar".
      * 
      * @param listener O ActionListener a ser adicionado.
      */
@@ -193,7 +193,7 @@ public class ViewReservaTela {
     }
 
     /**
-     * Método para adicionar um ActionListener ao botão "OK".
+     * Mï¿½todo para adicionar um ActionListener ao botï¿½o "OK".
      * 
      * @param listener O ActionListener a ser adicionado.
      */
@@ -202,7 +202,7 @@ public class ViewReservaTela {
     }
 
     /**
-     * Método para obter o texto digitado no campo de nome.
+     * Mï¿½todo para obter o texto digitado no campo de nome.
      * 
      * @return O texto digitado no campo de nome.
      */
@@ -211,7 +211,7 @@ public class ViewReservaTela {
     }
 
     /**
-     * Método para obter o tipo selecionado no JComboBox.
+     * Mï¿½todo para obter o tipo selecionado no JComboBox.
      * 
      * @return O tipo selecionado (CPF ou CNPJ).
      */
@@ -220,7 +220,7 @@ public class ViewReservaTela {
     }
 
     /**
-     * Método para atualizar a tabela de voos com os dados fornecidos.
+     * Mï¿½todo para atualizar a tabela de voos com os dados fornecidos.
      * 
      * @param data Os dados a serem exibidos na tabela de voos.
      */
@@ -230,9 +230,9 @@ public class ViewReservaTela {
     }
 
     /**
-     * Método para atualizar a tabela de itinerários com os dados fornecidos.
+     * Mï¿½todo para atualizar a tabela de itinerï¿½rios com os dados fornecidos.
      * 
-     * @param data Os dados a serem exibidos na tabela de itinerários.
+     * @param data Os dados a serem exibidos na tabela de itinerï¿½rios.
      */
     public void updateItinerariosTable(Object[][] data) {
         DefaultTableModel model = (DefaultTableModel) table_1.getModel();
