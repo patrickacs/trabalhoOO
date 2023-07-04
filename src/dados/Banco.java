@@ -11,7 +11,7 @@ import model.PessoaJuridica;
 import model.Voo;
 
 /**
- * Classe responsável por armazenar os dados do sistema.
+ * Classe responsï¿½vel por armazenar os dados do sistema.
  */
 public class Banco {
 
@@ -28,9 +28,9 @@ public class Banco {
     private static Banco instancia;
 
     /**
-     * Obtém a instância única da classe Banco.
+     * Obtï¿½m a instï¿½ncia ï¿½nica da classe Banco.
      *
-     * @return a instância da classe Banco.
+     * @return a instï¿½ncia da classe Banco.
      */
     public static Banco getInstance() {
         if (instancia == null) {
@@ -40,25 +40,25 @@ public class Banco {
     }
 
     /**
-     * Obtém a tabela de pessoas físicas.
+     * Obtï¿½m a tabela de pessoas fï¿½sicas.
      *
-     * @return a tabela de pessoas físicas.
+     * @return a tabela de pessoas fï¿½sicas.
      */
     public Hashtable<String, PessoaFisica> getPessoasFisicas() {
         return this.pessoaFisicaHTable;
     }
 
     /**
-     * Obtém a tabela de pessoas jurídicas.
+     * Obtï¿½m a tabela de pessoas jurï¿½dicas.
      *
-     * @return a tabela de pessoas jurídicas.
+     * @return a tabela de pessoas jurï¿½dicas.
      */
     public Hashtable<String, PessoaJuridica> getPessoasJuridicas() {
         return this.pessoaJuridicaHTable;
     }
 
     /**
-     * Obtém a lista de voos reservados.
+     * Obtï¿½m a lista de voos reservados.
      *
      * @return a lista de voos reservados.
      */
@@ -67,7 +67,7 @@ public class Banco {
     }
 
     /**
-     * Adiciona um voo à lista de voos.
+     * Adiciona um voo ï¿½ lista de voos.
      *
      * @param voo o voo a ser adicionado.
      */
@@ -76,7 +76,7 @@ public class Banco {
     }
 
     /**
-     * Obtém a lista de voos.
+     * Obtï¿½m a lista de voos.
      *
      * @return a lista de voos.
      */
@@ -85,20 +85,43 @@ public class Banco {
     }
 
     /**
-     * Adiciona uma pessoa física à tabela de pessoas físicas.
+     * Adiciona uma pessoa fï¿½sica ï¿½ tabela de pessoas fï¿½sicas.
      *
-     * @param pessoaFisica a pessoa física a ser adicionada.
+     * @param pessoaFisica a pessoa fï¿½sica a ser adicionada.
      */
     public void addPessoaFisica(PessoaFisica pessoaFisica) {
         this.pessoaFisicaHTable.put(pessoaFisica.getCPF(), pessoaFisica);
     }
 
     /**
-     * Adiciona uma pessoa jurídica à tabela de pessoas jurídicas.
+     * Adiciona uma pessoa jurï¿½dica ï¿½ tabela de pessoas jurï¿½dicas.
      *
-     * @param pessoaJuridica a pessoa jurídica a ser adicionada.
+     * @param pessoaJuridica a pessoa jurï¿½dica a ser adicionada.
      */
     public void addPessoaJuridica(PessoaJuridica pessoaJuridica) {
         this.pessoaJuridicaHTable.put(pessoaJuridica.getCNPJ(), pessoaJuridica);
+    }
+
+
+    public void removeVoo(int index) {
+        
+        this.arrayVoos.remove(index);
+
+    }
+
+    public void editaVoo(String horarioPartida, String horarioChegada, String data, int index) {
+
+        Voo voo = this.arrayVoos.get(index);
+
+        voo.setHorarioPartida(horarioPartida);
+        voo.setHorarioChegada(horarioChegada);
+        voo.setData(data);
+
+        System.out.println(voo.getHorarioPartida());
+        System.out.println(voo.getHorarioChegada());
+        System.out.println(voo.getData());
+
+        this.arrayVoos.set(index, voo);
+
     }
 }

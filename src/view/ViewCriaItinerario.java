@@ -1,4 +1,4 @@
-package view;
+ package view;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -19,7 +19,6 @@ public class ViewCriaItinerario {
     private JLabel background;
     private JTextField cidadedeorigem;
     private JTextField aeroportodeorigem;
-    private JTextField datadepartida;
     private JTextField aviao;
     private JTextField horariodepartida;
     private JTextField cidadededestino;
@@ -39,6 +38,8 @@ public class ViewCriaItinerario {
     private JLabel lblVagasDisponiveis;
     private JLabel lblHorarioChegada;
     private JLabel lblCidadeOrigem2;
+    private JFormattedTextField datadepartida;
+    
 
 
     private boolean areFieldFilled() {
@@ -68,6 +69,15 @@ public class ViewCriaItinerario {
         btnCancelar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
         btnCancelar.setBounds(441, 275, 106, 23);
         frame.getContentPane().add(btnCancelar);
+        
+        try {
+            MaskFormatter maskFormatter = new MaskFormatter("##/##/####");
+            datadepartida = new JFormattedTextField(maskFormatter);
+        } catch (Exception e) {
+            datadepartida = new JFormattedTextField();
+        }
+        datadepartida.setBounds(134, 146, 138, 20);
+        frame.getContentPane().add(datadepartida);
         
         btnConfirmar = new JButton("Confirmar");
         btnConfirmar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
@@ -117,16 +127,6 @@ public class ViewCriaItinerario {
         aeroportodeorigem.setBounds(134, 115, 138, 20);
         frame.getContentPane().add(aeroportodeorigem);
         aeroportodeorigem.setColumns(10);
-
-        JFormattedTextField datadepartida;
-        try {
-            MaskFormatter maskFormatter = new MaskFormatter("##/##/####");
-            datadepartida = new JFormattedTextField(maskFormatter);
-        } catch (Exception e) {
-            datadepartida = new JFormattedTextField();
-        }
-        datadepartida.setBounds(134, 146, 138, 20);
-        frame.getContentPane().add(datadepartida);
         
         aviao = new JTextField();
         aviao.setBounds(134, 177, 138, 20);

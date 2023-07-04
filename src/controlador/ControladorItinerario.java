@@ -5,7 +5,7 @@ import model.Voo;
 import java.util.ArrayList;
 
 /**
- * Classe controladora responsável por gerenciar os itinerários dos voos.
+ * Classe controladora responsï¿½vel por gerenciar os itinerï¿½rios dos voos.
  */
 public class ControladorItinerario {
 
@@ -23,12 +23,12 @@ public class ControladorItinerario {
      * Cria um novo voo com os dados fornecidos e o adiciona ao banco de dados.
      *
      * @param data             Data do voo
-     * @param numPoltronas     Número de poltronas disponíveis no voo
-     * @param horarioPartida   Horário de partida do voo
-     * @param horarioChegada   Horário de chegada do voo
+     * @param numPoltronas     Nï¿½mero de poltronas disponï¿½veis no voo
+     * @param horarioPartida   Horï¿½rio de partida do voo
+     * @param horarioChegada   Horï¿½rio de chegada do voo
      * @param aeroportoOrigem  Aeroporto de origem do voo
      * @param aeroportoChegada Aeroporto de chegada do voo
-     * @param descricaoAviao   Descrição do avião utilizado no voo
+     * @param descricaoAviao   Descriï¿½ï¿½o do aviï¿½o utilizado no voo
      */
     public void criaVoo(String data, int numPoltronas, String horarioPartida, String horarioChegada, String aeroportoOrigem, String aeroportoChegada, String descricaoAviao) {
 
@@ -38,13 +38,13 @@ public class ControladorItinerario {
     }
 
     /**
-     * Pesquisa os voos com base nos parâmetros fornecidos.
-     * Os parâmetros podem ser vazios para buscar todos os voos disponíveis.
+     * Pesquisa os voos com base nos parï¿½metros fornecidos.
+     * Os parï¿½metros podem ser vazios para buscar todos os voos disponï¿½veis.
      *
      * @param origem   Aeroporto de origem do voo
      * @param destino  Aeroporto de chegada do voo
      * @param data     Data do voo
-     * @return Uma lista de voos encontrados com base nos parâmetros de pesquisa
+     * @return Uma lista de voos encontrados com base nos parï¿½metros de pesquisa
      */
     public ArrayList<Voo> pesquisarVoos(String origem, String destino, String data) {
         ArrayList<Voo> voos = banco.getVoos();
@@ -63,11 +63,19 @@ public class ControladorItinerario {
     }
 
     /**
-     * Lista todos os voos disponíveis no banco de dados.
+     * Lista todos os voos disponï¿½veis no banco de dados.
      *
-     * @return Uma lista de todos os voos disponíveis
+     * @return Uma lista de todos os voos disponï¿½veis
      */
     public ArrayList<Voo> listarVoos() {
         return banco.getVoos();
+    }
+
+    public void excluirVoo(int index) {
+        banco.removeVoo(index);
+    }
+
+    public void editarVoo(String horarioPartida, String horarioChegada, String data, int index) {
+        banco.editaVoo(horarioPartida, horarioChegada, data, index);
     }
 }

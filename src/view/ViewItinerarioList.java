@@ -20,15 +20,14 @@ import model.Voo;
 import controlador.ControladorItinerario;
 
 /**
- * Classe responsável pela interface gráfica da tela de listagem de itinerários.
+ * Classe responsï¿½vel pela interface grï¿½fica da tela de listagem de itinerï¿½rios.
  * 
  * Autor: Patrick Anderson
- * Desde: versão 1
+ * Desde: versï¿½o 1
  */
 
 public class ViewItinerarioList {
     private JFrame frame;
-    private JLabel background;
     private JTable table;
     private JTextField campoOrigem;
     private JTextField campoData;
@@ -36,14 +35,14 @@ public class ViewItinerarioList {
     private JLabel lblBuscar;
     private JButton btnConfirmar;
     private JLabel lblItinerario;
-    private JScrollPane scrollPane;
     private JLabel lblOrigem;
     private JLabel lblData;
     private JLabel lblDestino;
     private JButton btnVoltar;
+    private JButton btnEdita;
 
     /**
-     * Construtor da classe ViewItinerarioList, onde é criada a interface gráfica.
+     * Construtor da classe ViewItinerarioList, onde ï¿½ criada a interface grï¿½fica.
      */
     public ViewItinerarioList() {
         ControladorItinerario controladorItinerario = new ControladorItinerario();
@@ -55,7 +54,7 @@ public class ViewItinerarioList {
         frame.setLocationRelativeTo(null);
 
         /**
-         * Botão de Voltar
+         * Botï¿½o de Voltar
          */
         btnVoltar = new JButton("Voltar");
         btnVoltar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
@@ -68,17 +67,17 @@ public class ViewItinerarioList {
         frame.getContentPane().add(btnVoltar);
 
         /**
-         * Botão de Confirmar
+         * Botï¿½o de Confirmar
          */
         btnConfirmar = new JButton("Confirmar");
         btnConfirmar.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-                // Obtém os valores dos campos de pesquisa
+                // Obtï¿½m os valores dos campos de pesquisa
                 String origem = campoOrigem.getText();
                 String destino = campoDestino.getText();
                 String data = campoData.getText();
 
-                // Chama o método de pesquisa do controlador de itinerário
+                // Chama o mï¿½todo de pesquisa do controlador de itinerï¿½rio
                 ArrayList<Voo> voosEncontrados = controladorItinerario.pesquisarVoos(origem, destino, data);
 
                 // Atualiza o modelo da tabela com os resultados da pesquisa
@@ -102,9 +101,9 @@ public class ViewItinerarioList {
         frame.getContentPane().add(btnConfirmar);
 
         /**
-         * Label Itinerário
+         * Label Itinerï¿½rio
          */
-        lblItinerario = new JLabel("Itinerário");
+        lblItinerario = new JLabel("Itinerario");
         lblItinerario.setFont(new Font("Segoe UI Semibold", Font.BOLD, 20));
         lblItinerario.setBounds(211, 11, 148, 48);
         frame.getContentPane().add(lblItinerario);
@@ -113,12 +112,12 @@ public class ViewItinerarioList {
         DefaultTableModel model = new DefaultTableModel(
             new Object[][] {},
             new String[] {
-                "Aeroporto de Partida", "Aeroporto de Chegada", "Horário de Partida",
-                "Horário de Chegada", "Data"
+                "Aeroporto de Partida", "Aeroporto de Chegada", "Horï¿½rio de Partida",
+                "Horï¿½rio de Chegada", "Data"
             }
         );
 
-        // Obtém os voos e os adiciona ao modelo da tabela
+        // Obtï¿½m os voos e os adiciona ao modelo da tabela
         ArrayList<Voo> voosEncontrados = controladorItinerario.listarVoos();
         for (Voo voo : voosEncontrados) {
             String[] rowData = {
@@ -145,7 +144,7 @@ public class ViewItinerarioList {
         JScrollPane scrollPane = new JScrollPane(table);
         scrollPane.setBounds(40, 170, 700, 250);
 
-        // Adicione o JScrollPane ao seu componente, como necessário
+        // Adicione o JScrollPane ao seu componente, como necessï¿½rio
         frame.getContentPane().add(scrollPane);
 
         /**
@@ -200,14 +199,68 @@ public class ViewItinerarioList {
         campoDestino.setBounds(613, 80, 148, 20);
         frame.getContentPane().add(campoDestino);
         campoDestino.setColumns(10);
+        
+        JButton btnApagar = new JButton("Apagar");
+        btnApagar.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
+        btnApagar.setBounds(40, 423, 123, 23);
+        
+        btnApagar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+ 
+                int selectedRow = table.getSelectedRow();
 
-        background = new JLabel("");
-        background.setLabelFor(frame);
-        background.setBounds(-114, -37, 875, 843);
-        frame.getContentPane().add(background);
+                // Se nenhuma linha foi selecionada, retorna
+                if (selectedRow == -1) {
+                    return;
+                }
+
+                DefaultTableModel model = (DefaultTableModel) table.getModel();
+
+  
+                controladorItinerario.excluirVoo(selectedRow);
+
+                model.removeRow(selectedRow);
+            }
+        });
+
+        frame.getContentPane().add(btnApagar);
+        
+        btnEdita = new JButton("Editar");
+        btnEdita.setFont(new Font("Segoe UI Semibold", Font.BOLD, 13));
+        btnEdita.setBounds(168, 423, 123, 23);
+
+        btnEdita.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                int selectedRow = table.getSelectedRow();
+
+                // Se nenhuma linha foi selecionada, retorna
+                if (selectedRow == -1) {
+                    return;
+                }
+
+                DefaultTableModel model = (DefaultTableModel) table.getModel();
+
+                
+                String horarioPartida = (String) model.getValueAt(selectedRow, 2).toString();
+                String horarioChegada = (String) model.getValueAt(selectedRow, 3).toString();
+                String data = (String) model.getValueAt(selectedRow, 4).toString();
+
+                controladorItinerario.editarVoo(horarioPartida, horarioChegada, data, selectedRow);
+
+            
+
+                
+                
+            }
+        });
+
+        frame.getContentPane().add(btnEdita);
+
+        
+
     }
 
-    // Obtém a tela
+    // Obtï¿½m a tela
     public JFrame getOriginFrame() {
         return frame;
     }
